@@ -12,7 +12,7 @@ I'd like to implement a stamp discovery process soon. But for now, here's some t
 - [http://creativeroots.io/snowshoe?dots=733,1372,903,748,783,487,117,1209,335,358](http://creativeroots.io/snowshoe?dots=733,1372,903,748,783,487,117,1209,335,358) < match!
 - [http://creativeroots.io/snowshoe?dots=833,1372,903,748,783,487,117,1209,335,358](http://creativeroots.io/snowshoe?dots=833,1372,903,748,783,487,117,1209,335,358) < no match
 
-Service URL: http://creativeroots.io/snowshoe?dots=<dot_pattern>
+Service URL: http://creativeroots.io/snowshoe
 
 Problem
 ========
