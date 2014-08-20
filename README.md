@@ -1,9 +1,14 @@
 Stamp Matching Solution
 ========
 
-The solution I chose was to calculate the euclidean distances between each nodes on a graph and then adjust for an error margin of 20 units. Much of the time was spent wrestling with the cairo library to get it to work with with the igraph graphing library. After that was pinned down (see [graph_samples.png](https://github.com/obimod/stamping/blob/master/graph_samples.png)), I was able to see why my solution wasn't working. There was an error margin! After testing a few values (10, 15, and then 20) I discovered that a margin of 20 was the sweet spot.
+The solution I chose was to calculate the euclidean distances between each node on two graphs--one of the real stamp of one for the coordinates we're testing with--and then compare those distances. Some time was spent wrestling with the cairo library to get it to work with with the igraph graphing library. After that was pinned down (see [graph_samples.png](https://github.com/obimod/stamping/blob/master/graph_samples.png)), I was able to see why my solution wasn't working. There was an error margin! After testing a few values (10, 15, and then 20) I discovered that a margin of 20 was the sweet spot for the given dataset.
 
-One interesting method might be to use a Voronoi diagram to capture areas and create measurements of overlap. This may be a more secure method but would probably cost more.
+One interesting alternative might be to calculate areas with a Voronoi diagram and then create measurements of overlap. This may be a more secure method but would probably take more processing resources.
+
+Euclidean distances on my MacBook Air (1.8GHz i7 & hosting locally):
+  - 50,000 executions took 9.94717907906 seconds
+  - 100,000 executions took 20.6022851467 seconds
+  - 200,000 executions took 40.0098121166 seconds
 
 I'd like to implement a stamp discovery process soon. But for now, here's some tests:
 [http://creativeroots.io/snowshoe?dots=733,1372,903,748,783,487,117,1209,335,358](http://creativeroots.io/snowshoe?dots=733,1372,903,748,783,487,117,1209,335,358)
