@@ -5,7 +5,6 @@ from logging import config as logging_config
 from settings import LOGGING
 logging_config.dictConfig(LOGGING)
 logging = logging.getLogger('default')
-# (T) Trim the fat off of BaseHandler
 class BaseHandler(webapp2.RequestHandler):
 
   ###############################
@@ -14,11 +13,6 @@ class BaseHandler(webapp2.RequestHandler):
 
   def dispatch(self):
     logging.info('[DISPATCH] ( %s ) %s' % (self.request.remote_addr, self.request.query))
-
-    ###############################
-    '''  Session Loading        '''
-    ###############################
-
     try:
       # Dispatch the request.
       webapp2.RequestHandler.dispatch(self)
@@ -37,7 +31,6 @@ class StampHandler(BaseHandler):
         test_config.append([dots.pop(0), dots.pop(0)])
       stamp_a = Stamp(STAMP_A)
       self.response.status_int == 200
-      logging.debug('testing the stamp now')
       if stamp_a.test(test_config):
         self.response.write('A\n')
       else:
