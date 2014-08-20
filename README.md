@@ -1,7 +1,7 @@
 Stamp Matching Solution
 ========
 
-The solution I chose was to calculate the euclidean distances between each node on two graphs--one of the real stamp of one for the coordinates we're testing with--and then compare those distances. Some time was spent wrestling with the cairo library to get it to plot images of the graphs with the igraph library. After those were plotted (see [graph_samples.png](https://github.com/obimod/stamping/blob/master/graph_samples.png) for an example), I was able to see why my solution wasn't working. There was an error margin! After testing a few values (10, 15, and then 20) I discovered that an error margin of 20 was the sweet spot for the given dataset.
+The solution I chose was to calculate the euclidean distances between each node on two graphs--one of the real stamp of one for the coordinates we're testing with--and then compare those distances. Some time was spent wrestling with the cairo library to get it to plot images of the graphs with the igraph library. After those were plotted (see [graph_samples.png](https://github.com/obimod/stamping/blob/master/graph_samples.png) and click on "Raw" for an example), I was able to see why my solution wasn't working. There was an error margin! After testing a few values (10, 15, and then 20) I discovered that an error margin of 20 was the sweet spot for the given dataset.
 
 Euclidean distances on my MacBook Air (1.8GHz i7 & hosting locally):
   - 50,000 executions took 9.94717907906 seconds
