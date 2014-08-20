@@ -67,5 +67,5 @@ def benchmark(points):
 def benchmark_test():
   # timing the loops
   n = int(raw_input('how many times to test?'))
-  cost = timeit.timeit('benchmark([[795,1411],[854,568],[696,328],[141,1138],[238,276]])', setup="from __main__ import test", number=n)
+  cost = timeit.timeit('benchmark([[795,1411],[854,568],[696,328],[141,1138],[238,276]])', setup="from __main__ import benchmark", number=n)
   logging.info('seconds: ' + str(cost))
