@@ -14,7 +14,37 @@ I'd like to implement a stamp discovery process soon. But for now, here's some t
 
 Service URL: http://creativeroots.io/snowshoe
 
-Problem
+Configuration 
+========
+
+The server uses uWSGI (an amazing webserver that does an incredible amount of things, including Lua.) so here's snowshoe.ini for a uWSGI emperor process, which assumes you have a virtualenv installed in /var/www/snowshoe with a subdirectory named snowshoe:
+```
+[uwsgi]
+chdir = /var/www/snowshoe
+home = /var/www/snowshoe
+virtualenv = /var/www/snowshoe
+pythonpath = /var/www/snowshoe
+env = PYTHON_PATH=$PYTHON_PATH:/var/www/snowshoe
+threads = 20
+socket = /tmp/snowshoe_wsgi.sock
+module = snowshoe.wsgi:application
+uid = www-data
+gid = www-data
+chown-socket = www-data:www-data
+chmod-socket = 777
+```
+
+Then nginx routes the requests:
+```
+  location /snowshoe {
+    include uwsgi_params;
+    access_log /var/log/nginx/snowshoe.access.log;
+    error_log /var/log/nginx/snowshoe.error.log;
+    uwsgi_pass unix:///tmp/snowshoe_wsgi.sock;
+  }
+```
+
+Original Problem
 ========
 
 We'd like you to write a toy SnowShoe tag recognizer program that can reliably identify the unique "dot pattern" of one of our standard SnowShoe developer tags. We'll provide you with a geometric tag definition and a small data set of potential tag matches.
